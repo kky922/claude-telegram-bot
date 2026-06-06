@@ -1,19 +1,19 @@
 {
   "name": "claude-telegram-bot",
   "version": "1.0.0",
-  "description": "Telegram bot powered by Claude AI",
-  "main": "index.js",
+  "description": "Minimal allowlisted Telegram bot powered by Claude",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts"
+    "start": "node --env-file=.env --experimental-strip-types index.ts",
+    "typecheck": "node --experimental-strip-types --check bot-core.ts && node --experimental-strip-types --check index.ts && node --experimental-strip-types --check index.test.ts",
+    "test": "node --experimental-strip-types --test index.test.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.80.0",
-    "dotenv": "^17.3.1",
     "telegraf": "^4.16.3"
   }
 }
